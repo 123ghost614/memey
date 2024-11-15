@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My calculator</title>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button
+            onlick= "number('7')">7
+            </button>
+            <button
+            onlick= "number('8')">8
+            </button>
+            <button
+            onlick= "number('9')">9
+            <button
+            onclick="operator('/')"
+            class="operator">/</button>
+            <button
+            onclick= "number('4')">4
+            <button         
+            onclick= "number('5')">5
+            <button
+            onclick= "number('6')">6
+            <button
+            onclick="operator('*')"
+            class="operator">*</button>
+            <button
+            onclick= "number('1')">1
+            <button
+            onclick= "number('2')">2
+            <button
+            onclick= "number('3')">3
+            <button
+            onclick="operator('-')"
+            class="operator">-</button>
+            <button
+            onclick= "number('0')">0</button>
+            <button
+            onclick= "number('.')">.</button>
+            <button onclick="calculate()" class="equal">=</button>
+            <button
+            onclick="operator('+')"
+            class="operator">+</button>
+            <button
+            onclick="clearDisplay()"
+            class="operator">C</button>
+            <button
+            onclick="clearDisplay()"
+            class="operator">Del</button>
+        </div>
+    </div>
+    <script>
+        let display = document.getElementById('display');
+        let currentinput = '0';
+        function appendNumber (num){
+            if (currentinput ==='0'){
+                currentinput = num;
+            } else{
+                currentinput += num;  
+            }
+            display.textcontent = currentinput
+        }
+        function appendoperator(operator){
+            currentinput += operator;display.textcontent =currentinput;
+        }
+        function cleardisplay(){
+            currentinput ='0'; display.textcontent =currentinput;
+        }
+        function calculate(){
+            try{
+                currentinput = eval(currentinput);
+                display.textcontent =currentinput;
+            } catch (error) {
+                display.textcontent  ='error';
+            }
+        }
+    </script>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: blanchedalmond;
+        }
+        .calculator{
+            background-color:black;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .display{
+            background-color: aquamarine;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: right;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .buttons{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap:10px
+        }
+        .buttton{
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color:cadetblue;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button:hover{
+            background-color: #60ccec;
+        }
+        .operator{
+            background-color: gray;
+        }
+        .equal{
+            background-color: rgb(96, 180, 190);
+            color:black;
+        }
+    </style>
+</body>
+</html>
